@@ -12,11 +12,11 @@ public class CameraFallow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (target.position.x > 0 || target.position.y < -5)
+        if (target.position.x > 0)
         {
             if(target.position.y < -5.5f)
             {
-                yPos = -15;
+                yPos = -14;
             }
             else
             {

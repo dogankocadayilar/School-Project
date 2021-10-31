@@ -6,6 +6,7 @@ public class PlayerControl : MonoBehaviour
 {
     [SerializeField] float speed = 1f;
     [SerializeField] float jumpForce = 1f;
+    [SerializeField] float bouncerForce = 1f;
 
     Rigidbody2D rb;
     Animator anim;
@@ -72,6 +73,11 @@ public class PlayerControl : MonoBehaviour
             anim.SetBool("isJumping", false);
 
             canJump = true;
+        }
+
+        if(collision.gameObject.tag == "Bouncer")
+        {
+            rb.AddForce(Vector2.up * bouncerForce, ForceMode2D.Impulse);
         }
     }
 }
