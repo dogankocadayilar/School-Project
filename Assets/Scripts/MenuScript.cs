@@ -6,11 +6,14 @@ using UnityEngine.SceneManagement;
 public class MenuScript : MonoBehaviour
 {
     [SerializeField] GameObject optionsMenu;
+    [SerializeField] GameObject finishMenu;
+    [SerializeField] Collider2D player;
+    [SerializeField] Collider2D exit;
 
     public void PlayGame() {SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); Time.timeScale = 1; }
     public void ExitGame() => Application.Quit();
     public void OptionsBack() => Time.timeScale = 1;
-    public void OptionsExit() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+    public void OptionsExit() => SceneManager.LoadScene(0);
     public void DeathRestart() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
 
@@ -30,5 +33,16 @@ public class MenuScript : MonoBehaviour
                 optionsMenu.SetActive(true);
             }
         }
+
+        if(player != null)
+        {
+            if (player.IsTouching(exit))
+            {
+                finishMenu.SetActive(true);
+                player.gameObject.SetActive(false);
+            }
+        }
     }
+
+
 }

@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
+    [SerializeField] GameObject finishMenu;
+
     [SerializeField] float speed = 1f;
     [SerializeField] float jumpForce = 1f;
-    [SerializeField] float bouncerForce = 1f;
 
     Rigidbody2D rb;
     Animator anim;
@@ -66,18 +67,23 @@ public class PlayerControl : MonoBehaviour
         anim.SetTrigger("Attack");
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D col)
     {
-        if (collision.gameObject.tag == "Ground" )
+        if (col.gameObject.tag == "Ground" )
         {
             anim.SetBool("isJumping", false);
 
             canJump = true;
         }
 
-        if(collision.gameObject.tag == "Bouncer")
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if(col.gameObject.tag == "Coin")
         {
-            rb.AddForce(Vector2.up * bouncerForce, ForceMode2D.Impulse);
+            col.gameObject.SetActive(false);
         }
+
     }
 }

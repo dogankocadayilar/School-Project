@@ -16,7 +16,14 @@ public class CameraFallow : MonoBehaviour
         {
             if(target.position.y < -5.5f)
             {
-                yPos = -14;
+                if(target.position.y > -12)
+                {
+                    yPos = -12.0f;
+                }
+                else
+                {
+                    yPos = -15.0f;
+                }
             }
             else
             {
