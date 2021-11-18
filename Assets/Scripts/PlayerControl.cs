@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerControl : MonoBehaviour
 {
-    [SerializeField] GameObject finishMenu;
-
     [SerializeField] float speed = 1f;
     [SerializeField] float jumpForce = 1f;
+    [SerializeField] TextMeshProUGUI scoreText;
 
+    int score = 0;
     Rigidbody2D rb;
     Animator anim;
     bool canJump;
@@ -17,6 +18,7 @@ public class PlayerControl : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        scoreText.text = "0 / 25";
     }
 
     void FixedUpdate()
@@ -82,7 +84,9 @@ public class PlayerControl : MonoBehaviour
     {
         if(col.gameObject.tag == "Coin")
         {
+            score++;
             col.gameObject.SetActive(false);
+            scoreText.text = score + " / 25";
         }
 
     }
