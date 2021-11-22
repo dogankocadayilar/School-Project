@@ -9,7 +9,6 @@ public class CameraFallow : MonoBehaviour
     private Vector3 velocity = Vector3.zero;
     float yPos;
 
-    // Update is called once per frame
     void Update()
     {
         if (target.position.x > 0)
