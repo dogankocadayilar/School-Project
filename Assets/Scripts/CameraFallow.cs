@@ -11,7 +11,7 @@ public class CameraFallow : MonoBehaviour
 
     void Update()
     {
-        if (target.position.x > 0)
+        if (target.position.x > -7f)
         {
             if(target.position.y < -5.5f)
             {

@@ -18,7 +18,7 @@ public class PlayerControl : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        scoreText.text = "0 / 25";
+        //scoreText.text = "0 / 25";
     }
 
     void FixedUpdate()
