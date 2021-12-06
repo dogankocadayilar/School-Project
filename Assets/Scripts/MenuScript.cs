@@ -15,6 +15,7 @@ public class MenuScript : MonoBehaviour
     public void OptionsBack() => Time.timeScale = 1;
     public void OptionsExit() => SceneManager.LoadScene(0);
     public void DeathRestart() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    public void FinishNext() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
 
 
@@ -34,7 +35,7 @@ public class MenuScript : MonoBehaviour
             }
         }
 
-        if(player != null)
+        if(player != null && exit != null)
         {
             if (player.IsTouching(exit))
             {

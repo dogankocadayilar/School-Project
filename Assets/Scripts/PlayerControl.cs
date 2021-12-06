@@ -7,6 +7,7 @@ public class PlayerControl : MonoBehaviour
 {
     [SerializeField] float speed = 1f;
     [SerializeField] float jumpForce = 1f;
+    [SerializeField] int coinNum = 25;
     [SerializeField] TextMeshProUGUI scoreText;
 
     int score = 0;
@@ -18,7 +19,7 @@ public class PlayerControl : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        //scoreText.text = "0 / 25";
+        scoreText.text = "0 / "+coinNum;
     }
 
     void FixedUpdate()
@@ -86,7 +87,7 @@ public class PlayerControl : MonoBehaviour
         {
             score++;
             col.gameObject.SetActive(false);
-            scoreText.text = score + " / 25";
+            scoreText.text = score + " / "+coinNum;
         }
 
     }
