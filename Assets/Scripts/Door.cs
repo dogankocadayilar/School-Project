@@ -14,9 +14,16 @@ public class Door : MonoBehaviour
             bool isOpen = col.gameObject.GetComponent<PlayerControl>().isOpen;
             if (isOpen)
             {
-                anim.SetTrigger("isTriggered");
-                col.transform.position = secondDoor.position;
+                StartCoroutine(DoorAnim(col.transform));
+
             }
         }
+    }
+
+    IEnumerator DoorAnim(Transform col)
+    {
+        anim.SetTrigger("isTriggered");
+        yield return new WaitForSeconds(0.2f);
+        col.position = secondDoor.position;
     }
 }
