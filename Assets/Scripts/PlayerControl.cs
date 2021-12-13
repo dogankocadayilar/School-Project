@@ -10,6 +10,8 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] int coinNum = 25;
     [SerializeField] TextMeshProUGUI scoreText;
 
+    public bool isOpen = false;
+
     int score = 0;
     Rigidbody2D rb;
     Animator anim;
@@ -88,6 +90,11 @@ public class PlayerControl : MonoBehaviour
             score++;
             col.gameObject.SetActive(false);
             scoreText.text = score + " / "+coinNum;
+        }
+        else if(col.gameObject.tag == "Key")
+        {
+            col.gameObject.SetActive(false);
+            isOpen = true;
         }
 
     }
